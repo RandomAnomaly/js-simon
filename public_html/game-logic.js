@@ -89,6 +89,7 @@ var gameLogic = function(){
         sequence = [];
         sequenceTemp = [];
         simonDisplay.zeroPathLength();
+        gameLogicReturner.play();
     }
 
     
@@ -105,21 +106,61 @@ var gameLogic = function(){
                 showQueueWithDelay();
                 
             }
+
             else if(sequence.length === 0){
+                if(sequenceTemp.length !== 20){
+
                 // we've finished this round
                 sequence = sequenceTemp.slice();
                 sequenceTemp = [];
                 addNewMove();
                 showQueueWithDelay();
+            } else {
+                // player victory
+                victory();
+                
             }
         }
     }
+}
 
-    var showQueueWithDelay = function(){
+var showQueueWithDelay = function(){
+    setTimeout(function(){
+        showQueue();
+    }, timeout);
+}
+
+var victory = function(){
+    dance();
+    setTimeout(function(){
+        gameLogicReturner.restart();
+    }, 2000);
+};
+
+var dance = function(){
+    flashAll();
+
+    simonDisplay.setScreenValue("--");
+    setTimeout(function(){
+        simonDisplay.setScreenValue("\\\\");
+        flashAll();
         setTimeout(function(){
-            showQueue();
-        }, timeout);
-    }
+            simonDisplay.setScreenValue("//");
+            flashAll();
+            setTimeout(function(){
+                simonDisplay.setScreenValue("--");
+                flashAll();
+            },timeout)
+        },timeout)
+    },timeout)
+}
 
-    return gameLogicReturner;
+var flashAll = function(){
+    flashSegment("pathOne");
+    flashSegment("pathTwo");
+    flashSegment("pathThree");
+    flashSegment("rectOne");
+}
+
+return gameLogicReturner;
 }();

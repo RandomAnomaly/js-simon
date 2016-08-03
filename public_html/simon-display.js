@@ -59,6 +59,11 @@
  		element.innerHTML = "00";
  	}
 
+ 	simonDisplayReturner.setScreenValue = function(value){
+ 		var element = document.querySelector("#control-group text");
+ 		element.innerHTML = value;
+ 	}
+
  	return simonDisplayReturner;
  }())
 
