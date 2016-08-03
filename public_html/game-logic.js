@@ -43,13 +43,12 @@ var gameLogic = function(){
     var addNewMove = function(){
         var segmentToAdd = generateRandomSegment();
 
-
-
         while(segmentToAdd === sequence[sequence.length -1]){
             segmentToAdd = generateRandomSegment();
         }
 
         sequence.push(segmentToAdd);
+        simonDisplay.incrementPathLength();
     };
 
     var showQueue = function(){

@@ -44,7 +44,14 @@ and open the template in the editor.
 				<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" stroke="green" stroke-width='1' fill="green"/>
 				<path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" stroke="blue" stroke-width='1' transform="translate(100,0) scale(-1,1)" fill="blue"/>
 				<rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" stoke="red" stroke-width="1" transform="translate(42.5,10)" fill="red"/>
-				<path id="pathThree" d="M40.5 42 L20 42 L20 60 L80 60 L80 42 L60 42 L60 47 L40 47 L40 42" stroke="yellow"  stroke-width="1" fill="yellow"/>
+				
+				<path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" stroke="yellow"  stroke-width="1" fill="yellow"/>				
+
+				<g id="control-group">
+					<rect x="40" y="48" width="20" height="12" stroke-width="1" stroke="black"/>
+					<text x="40" y="59.5">0</text>
+				</g>
+
 			</svg>
 
 			<button class="btn btn-primary" onClick="gameLogic.play();">Start</button>

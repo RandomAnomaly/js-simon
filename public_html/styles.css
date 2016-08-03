@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : jack
 */
 
-#triangleTwo {
-	
+@font-face {
+	font-family: 'digital-7';	
+	src: url(digital-7.ttf);
 }
+
+#control-group text{
+	font-family: digital-7;
+	fill: red;
+}
+

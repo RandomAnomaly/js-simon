@@ -48,6 +48,12 @@
  		value.style.fill = sections[value.id]['blockColor'];
  	}
 
+ 	simonDisplayReturner.incrementPathLength = function(){
+ 		var element = document.querySelector("#control-group text");
+ 		var newValue = parseInt(element.innerHTML) + 1;
+ 		element.innerHTML = newValue;
+ 	}
+
  	return simonDisplayReturner;
  }())
 
