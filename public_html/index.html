@@ -44,18 +44,18 @@ and open the template in the editor.
 					<g>
 						<ellipse cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black"/>
 					</g>
-
+  
 					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="#BCB001"/>
-					<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="#938B00"/>
+					<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" onClick="gameLogic.makeMove('pathOne');" fill="#938B00"/>
 
 					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="#BC5201"/>
-					<path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="#934000"/>
+					<path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)"  onClick="gameLogic.makeMove('pathTwo');" fill="#934000"/>
 					
 					<rect x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="#00736B"/>
-					<rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="#005A53"/>
+					<rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" onClick="gameLogic.makeMove('rectOne');" fill="#005A53"/>
 
 					<path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="#460A7F"/>				
-					<path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="#350663"/>
+					<path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" onClick="gameLogic.makeMove('pathThree');" fill="#350663"/>
 
 					<g id="control-group">
 						<ellipse cx="50" cy="40" rx="20" ry="20" fill="black"/>

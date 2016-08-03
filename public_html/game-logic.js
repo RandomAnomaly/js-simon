@@ -1,7 +1,12 @@
 var gameLogic = function(){
     var gameLogicReturner = {};
 
+    var waitingForPlayer = true;
+
     var sequence = [];
+
+    var sequenceTemp = [];
+
     var timeout = 500;
 
     var segmentMappings = {
@@ -31,7 +36,6 @@ var gameLogic = function(){
         }
     }
 
-
     var generateRandomSegment = function(){
         return segmentMappings[randomNumber(1,4)]
     };
@@ -56,6 +60,7 @@ var gameLogic = function(){
         for(var i = 0; i < sequence.length; i += 1){
             doShowQueue(i);
         }
+        sequenceTemp = sequence.slice();
     };
 
     var doShowQueue = function(i){
@@ -66,7 +71,6 @@ var gameLogic = function(){
             flashSegment(s);
         },delay);
     }
-
 
     var flashSegment = function(segment){
 
@@ -81,7 +85,41 @@ var gameLogic = function(){
         showQueue();
     }
 
+    gameLogicReturner.restart = function(){
+        sequence = [];
+        sequenceTemp = [];
+        simonDisplay.zeroPathLength();
+    }
 
+    
+    gameLogicReturner.makeMove = function(button){
+        if(waitingForPlayer){
+            flashSegment(button);
+            var nextValidMove = sequence.shift();
+            if(button !== nextValidMove){
+                console.log("Incorrect move");
+                // restart with the current sequence
+                console.log("Sequence: " + sequence + " Temp: " + sequenceTemp);
+                sequence = sequenceTemp.slice();                
+                // sleep for a bit
+                showQueueWithDelay();
+                
+            }
+            else if(sequence.length === 0){
+                // we've finished this round
+                sequence = sequenceTemp.slice();
+                sequenceTemp = [];
+                addNewMove();
+                showQueueWithDelay();
+            }
+        }
+    }
+
+    var showQueueWithDelay = function(){
+        setTimeout(function(){
+            showQueue();
+        }, timeout);
+    }
 
     return gameLogicReturner;
 }();

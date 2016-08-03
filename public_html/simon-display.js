@@ -54,6 +54,11 @@
  		element.innerHTML = (newValue < 10 ? "0" + newValue : newValue);
  	}
 
+ 	simonDisplayReturner.zeroPathLength = function(){
+ 		var element = document.querySelector("#control-group text");
+ 		element.innerHTML = "00";
+ 	}
+
  	return simonDisplayReturner;
  }())
 
