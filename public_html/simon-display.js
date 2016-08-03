@@ -51,7 +51,7 @@
  	simonDisplayReturner.incrementPathLength = function(){
  		var element = document.querySelector("#control-group text");
  		var newValue = parseInt(element.innerHTML) + 1;
- 		element.innerHTML = newValue;
+ 		element.innerHTML = (newValue < 10 ? "0" + newValue : newValue);
  	}
 
  	return simonDisplayReturner;

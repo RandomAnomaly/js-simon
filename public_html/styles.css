@@ -10,13 +10,13 @@ and open the template in the editor.
 
 @font-face {
 	font-family: 'digital-7';	
-	src: url(digital-7.ttf);
+	src: url('digital-7 (mono).ttf');
 }
 
 #streak-text{
 	font-family: digital-7;
 	fill: red;
-	
+
 }
 
 
