@@ -2,11 +2,15 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
+
+NB: http://paletton.com/#uid=12P0u0kgmku7+tXcuoDkigEp0cB
 */
 /* 
     Created on : 3/08/2016, 12:27:46 PM
     Author     : jack
 */
+
+
 
 @font-face {
 	font-family: 'digital-7';	
@@ -19,9 +23,20 @@ and open the template in the editor.
 
 }
 
+html, body {
+	background: #393E3D;
+}
 
+#outerEllipse {
+	fill: #575D5C;
+}
+
+#innerEllipse {
+	fill: #757D7B;
+}
 
 #lcd-painted-text1{
 	fill:white;
 
 }
+
