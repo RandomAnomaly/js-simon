@@ -29,7 +29,7 @@
  		}
  	}
 
- 	simonDisplayReturner.flashSegment = function(value, timeout, delayStart){
+ 	simonDisplayReturner.flashSegment = function(value, timeout){
  		var element = document.querySelector("#" + value);
 
  		lightUpSegment(element);
@@ -41,12 +41,10 @@
  	};
 
  	var lightUpSegment = function(value){
- 		console.log("light on");
  		value.style.fill = "url(#" + sections[value.id]['gradient'] + ")";
  	};
 
  	var lightOffSegment = function(value){
- 		console.log("light off");
  		value.style.fill = sections[value.id]['blockColor'];
  	}
 
