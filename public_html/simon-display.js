@@ -49,18 +49,18 @@
  	}
 
  	simonDisplayReturner.incrementPathLength = function(){
- 		var element = document.querySelector("#control-group text");
+ 		var element = document.querySelector("#streak-text");
  		var newValue = parseInt(element.innerHTML) + 1;
  		element.innerHTML = (newValue < 10 ? "0" + newValue : newValue);
  	}
 
  	simonDisplayReturner.zeroPathLength = function(){
- 		var element = document.querySelector("#control-group text");
+ 		var element = document.querySelector("#streak-text");
  		element.innerHTML = "00";
  	}
 
  	simonDisplayReturner.setScreenValue = function(value){
- 		var element = document.querySelector("#control-group text");
+ 		var element = document.querySelector("#streak-text");
  		element.innerHTML = value;
  	}
 

@@ -42,7 +42,7 @@ and open the template in the editor.
 					</radialGradient>
 
 					<filter id="blur">
-					<feGaussianBlur = in="SourceGraphic" stdDeviation="0.5"/>
+						<feGaussianBlur = in="SourceGraphic" stdDeviation="0.5"/>
 					</filter>
 
 					<g>
@@ -50,8 +50,8 @@ and open the template in the editor.
 						<ellipse id="outerEllipse" cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black"/>
 						<ellipse cx="50" cy="37.5" rx="32" ry="32" fill="none" stroke="silver"/>
 					</g>
-  
-  					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="black" filter="url(#blur)"/>
+
+					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="black" filter="url(#blur)"/>
 					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="#BCB001"/>
 					<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" onClick="gameLogic.makeMove('pathOne');" fill="#938B00"/>
 
@@ -72,22 +72,25 @@ and open the template in the editor.
 					
 					<ellipse cx="50" cy="40" rx="18" ry="18" fill="silver"/>
 
-					<g id="control-group" transform="scale(0.5,0.5) translate(30,40)">
+					<g id="lcd-display" transform="scale(0.5,0.5) translate(30,40)">
 						<rect x="40" y="40" width="20" height="10" fill="black"/>
 						<text id="streak-text" font-size="9" x="45.5" y="49.75">00</text>
 						<text id="lcd-painted-text1" font-size="3" x="41" y="43">Steps</text>
 					</g>
 
 					<g id="logo">
-					<rect x="40" y="27" width="20" height="7.5" fill="none" stroke="black" stroke-width="0.5"/>
-					<g transform="translate(-19.75,-6.75) scale(1.5,1.5)">
-						<text x="40" y="27" font-size="5" font-family="IMPACT" fill="white">SIMON</text>
-
-						<text x="40" y="27" font-size="5" font-family="IMPACT" fill="none" stroke-width="0.1" stroke="black">SIMON</text>						
-
-					</g>
+						<rect x="40" y="27" width="20" height="7.5" fill="none" stroke="black" stroke-width="0.5"/>
+						<g transform="translate(-19.75,-6.75) scale(1.5,1.5)">
+							<text x="40" y="27" font-size="5" font-family="IMPACT" fill="white">SIMON</text>
+							<text x="40" y="27" font-size="5" font-family="IMPACT" fill="none" stroke-width="0.1" stroke="black">SIMON</text>						
+						</g>
 					</g>
 
+					<g>
+						<ellipse cx="50" cy="53" rx="0.2" ry="2.2" stroke="none" fill="black"/>
+						<ellipse cx="49" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
+						<ellipse cx="51" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
+					</g>
 				</g>
 			</svg>
 
