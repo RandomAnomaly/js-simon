@@ -28,11 +28,11 @@ html, body {
 }
 
 #outerEllipse {
-	fill: #575D5C;
+	fill: black;
 }
 
 #innerEllipse {
-	fill: #757D7B;
+	fill: black;
 }
 
 #lcd-painted-text1{

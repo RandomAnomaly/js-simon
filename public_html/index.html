@@ -47,7 +47,8 @@ and open the template in the editor.
 
 					<g>
 						<ellipse cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black" filter="URL(#blur)"/>
-						<ellipse id="outerEllipse" cx="50" cy="37.5" rx="34.5" ry="34.5" fill="silver"/>
+						<ellipse id="outerEllipse" cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black"/>
+						<ellipse cx="50" cy="37.5" rx="32" ry="32" fill="none" stroke="silver"/>
 					</g>
   
   					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="black" filter="url(#blur)"/>
@@ -66,15 +67,27 @@ and open the template in the editor.
 					<path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="#460A7F"/>
 					<path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" onClick="gameLogic.makeMove('pathThree');" fill="#350663"/>
 
-					<g id="control-group">
-						<ellipse cx="50" cy="40" rx="20" ry="20" fill="black" filter="URL(#blur)"/>
-						<ellipse id="innerEllipse" cx="50" cy="40" rx="20" ry="20" fill="black"/>
-						
-						<rect x="40" y="40" width="20" height="10" fill="black"/>
+					<ellipse cx="50" cy="40" rx="20" ry="20" fill="black" filter="URL(#blur)"/>
+					<ellipse id="innerEllipse" cx="50" cy="40" rx="20" ry="20" fill="black"/>
+					
+					<ellipse cx="50" cy="40" rx="18" ry="18" fill="silver"/>
 
+					<g id="control-group" transform="scale(0.5,0.5) translate(30,40)">
+						<rect x="40" y="40" width="20" height="10" fill="black"/>
 						<text id="streak-text" font-size="9" x="45.5" y="49.75">00</text>
 						<text id="lcd-painted-text1" font-size="3" x="41" y="43">Steps</text>
 					</g>
+
+					<g id="logo">
+					<rect x="40" y="27" width="20" height="7.5" fill="none" stroke="black" stroke-width="0.5"/>
+					<g transform="translate(-19.75,-6.75) scale(1.5,1.5)">
+						<text x="40" y="27" font-size="5" font-family="IMPACT" fill="white">SIMON</text>
+
+						<text x="40" y="27" font-size="5" font-family="IMPACT" fill="none" stroke-width="0.1" stroke="black">SIMON</text>						
+
+					</g>
+					</g>
+
 				</g>
 			</svg>
 
