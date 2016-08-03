@@ -5,12 +5,51 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+	<script src="simon-display.js"></script>
+	<script src="game-logic.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles.css" type="text/css"/>
+	<link rel="shortcut icon" href="">
+</head>
+<body>
+	<div class="row">
+		<div class="col-lg-4 col-lg-push-4">
+			<svg width="100%" viewbox="0 0 100 100">
+				<radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+					<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+					<stop offset="100%" style="stop-color:green; stop-opacity:1"/>
+				</radialGradient>
+
+				<radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+					<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+					<stop offset="100%" style="stop-color:blue; stop-opacity:1"/>
+				</radialGradient>
+
+				<radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+					<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+					<stop offset="100%" style="stop-color:red; stop-opacity:1"/>
+				</radialGradient>
+
+				<radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+					<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+					<stop offset="100%" style="stop-color:yellow; stop-opacity:1"/>
+				</radialGradient>
+
+				<path d="M0 0 L0 100 L100 100 L100 0 L0 0" stroke="red" stroke-width='1' fill="none"/>
+				<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" stroke="green" stroke-width='1' fill="green"/>
+				<path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" stroke="blue" stroke-width='1' transform="translate(100,0) scale(-1,1)" fill="blue"/>
+				<rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" stoke="red" stroke-width="1" transform="translate(42.5,10)" fill="red"/>
+				<path id="pathThree" d="M40.5 42 L20 42 L20 60 L80 60 L80 42 L60 42 L60 47 L40 47 L40 42" stroke="yellow"  stroke-width="1" fill="yellow"/>
+			</svg>
+
+			<button class="btn btn-primary" onClick="gameLogic.play();">Start</button>
+
+		</div>
+	</div>
+</body>
 </html>
