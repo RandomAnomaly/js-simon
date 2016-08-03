@@ -13,8 +13,15 @@ and open the template in the editor.
 	src: url(digital-7.ttf);
 }
 
-#control-group text{
+#streak-text{
 	font-family: digital-7;
 	fill: red;
+	
 }
 
+
+
+#lcd-painted-text1{
+	fill:white;
+
+}
