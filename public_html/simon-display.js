@@ -13,19 +13,19 @@
  	var sections = {
  		pathOne: {
  			gradient: "gradient1",
- 			blockColor: "green"
+ 			blockColor: "938B00"
  		},
  		pathTwo: {
  			gradient: "gradient2",
- 			blockColor: "blue"
+ 			blockColor: "#934000"
  		},
  		pathThree: {
  			gradient: "gradient4",
- 			blockColor: "yellow"
+ 			blockColor: "#350663"
  		},
  		rectOne: {
  			gradient: "gradient3",
- 			blockColor: "red"
+ 			blockColor: "#005A53"
  		}
  	}
 
