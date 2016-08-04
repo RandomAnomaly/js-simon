@@ -59,15 +59,26 @@ var gameLogic = function () {
     };
 
     var showQueue = function () {
+        waitingForPlayer = false;
         console.log("Queue is: " + sequence);
         for (var i = 0; i < sequence.length; i += 1) {
             doShowQueue(i);
         }
+        var totalQueueTime = sequence.length * timeout;
+
+        doEnablePlayerInput(totalQueueTime);
+
         sequenceTemp = sequence.slice();
     };
 
+    var doEnablePlayerInput = function(value){
+        setTimeout(function(){
+            waitingForPlayer = true;
+        }, value);
+    }
+
     var doShowQueue = function (i) {
-        var delay = timeout * i + 10;
+        var delay = timeout * i;
         var segment = sequence[i];
         setTimeout(function () {
             var s = segment;
@@ -82,16 +93,20 @@ var gameLogic = function () {
     }
 
     gameLogicReturner.toggleStrictMode = function () {
-        simonDisplay.strictLight(!isStrictMode);
-        isStrictMode = !isStrictMode;
-        reset();
+        if (waitingForPlayer) {
+            simonDisplay.strictLight(!isStrictMode);
+            isStrictMode = !isStrictMode;
+            reset();
+        }
     }
 
     gameLogicReturner.restart = function () {
-        reset();
-        gameInProgress = true;
-        addNewMove();
-        showQueue();
+        if (waitingForPlayer) {
+            reset();
+            gameInProgress = true;
+            addNewMove();
+            showQueue();
+        }
     }
 
     var reset = function () {
@@ -102,33 +117,35 @@ var gameLogic = function () {
     }
 
     gameLogicReturner.makeMove = function (button) {
-        if (!gameInProgress) {
-            flashSegment(button);
-        } else {
-            if (waitingForPlayer) {
+        if (waitingForPlayer) {
+            if (!gameInProgress) {
                 flashSegment(button);
-                var nextValidMove = sequence.shift();
-                if (button !== nextValidMove) {
-                    if (isStrictMode) {
-                        failure();
-                    } else {
-                        //non-strict
-                        // restart with the current sequence
-                        sequence = sequenceTemp.slice();
-                        // sleep for a bit
-                        showQueueWithDelay();
-                    }
-                } else if (sequence.length === 0) {
-                    if (sequenceTemp.length !== 20) {
-                        // we've finished this round
-                        sequence = sequenceTemp.slice();
-                        sequenceTemp = [];
-                        addNewMove();
-                        showQueueWithDelay();
-                    } else {
-                        // player victory
-                        victory();
+            } else {
+                if (waitingForPlayer) {
+                    flashSegment(button);
+                    var nextValidMove = sequence.shift();
+                    if (button !== nextValidMove) {
+                        if (isStrictMode) {
+                            failure();
+                        } else {
+                            //non-strict
+                            // restart with the current sequence
+                            sequence = sequenceTemp.slice();
+                            // sleep for a bit
+                            showQueueWithDelay();
+                        }
+                    } else if (sequence.length === 0) {
+                        if (sequenceTemp.length !== 20) {
+                            // we've finished this round
+                            sequence = sequenceTemp.slice();
+                            sequenceTemp = [];
+                            addNewMove();
+                            showQueueWithDelay();
+                        } else {
+                            // player victory
+                            victory();
 
+                        }
                     }
                 }
             }
@@ -153,7 +170,7 @@ var gameLogic = function () {
 
     var dance = function () {
         flashAll();
-
+        waitingForPlayer = false;
         simonDisplay.setScreenValue("--");
         setTimeout(function () {
             simonDisplay.setScreenValue("\\\\");
@@ -167,6 +184,8 @@ var gameLogic = function () {
                 }, timeout)
             }, timeout)
         }, timeout)
+
+        doEnablePlayerInput(1500);
     }
 
     var flashAll = function () {
