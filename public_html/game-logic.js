@@ -80,16 +80,12 @@ var gameLogic = function(){
         simonDisplay.flashSegment(segment, timeout);
     }
 
-    gameLogicReturner.play = function(){
-        addNewMove();
-        showQueue();
-    }
-
     gameLogicReturner.restart = function(){
         sequence = [];
         sequenceTemp = [];
         simonDisplay.zeroPathLength();
-        gameLogicReturner.play();
+        addNewMove();
+        showQueue();
     }
 
     
