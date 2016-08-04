@@ -1,42 +1,36 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-
-NB: http://paletton.com/#uid=12P0u0kgmku7+tXcuoDkigEp0cB
-*/
 /* 
     Created on : 3/08/2016, 12:27:46 PM
-    Author     : jack
+    Author     : Jack Gammon
+    Description: CSS for the simon game
 */
 
 
 
 @font-face {
-	font-family: 'digital-7';	
-	src: url('digital-7 (mono).ttf');
+    font-family: 'digital-7';	
+    src: url('digital-7 (mono).ttf');
 }
 
 #streak-text{
-	font-family: digital-7;
-	fill: red;
+    font-family: digital-7;
+    fill: red;
 
 }
 
 html, body {
-	background: #393E3D;
+    background: #393E3D;
 }
 
 #outerEllipse {
-	fill: black;
+    fill: black;
 }
 
 #innerEllipse {
-	fill: black;
+    fill: black;
 }
 
 #lcd-painted-text1{
-	fill:white;
+    fill:white;
 
 }
 

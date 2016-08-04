@@ -1,112 +1,111 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Author: Jack Gammon
+Description: HTML for the Simon game, primarily svg
 -->
 <html>
-<head>
-	<title>TODO supply a title</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
-	<script src="simon-display.js"></script>
-	<script src="game-logic.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles.css" type="text/css"/>
-	<link rel="shortcut icon" href="">
-</head>
-<body>
-	<div class="row">
-		<div class="col-lg-4 col-lg-push-4">
-			<svg width="100%" viewbox="0 0 80 80">
-				<g id="simonGameGroup" transform="translate(-10,0)">
-					<radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-						<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
-						<stop offset="100%" style="stop-color:#938B00; stop-opacity:1"/>
-					</radialGradient>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+        <script src="simon-display.js"></script>
+        <script src="game-logic.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css" type="text/css"/>
+        <link rel="shortcut icon" href="">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-lg-4 col-lg-push-4">
+                <svg width="100%" viewbox="0 0 80 80">
+                <g id="simonGameGroup" transform="translate(-10,0)">
+                <radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+                <stop offset="100%" style="stop-color:#938B00; stop-opacity:1"/>
+                </radialGradient>
 
-					<radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-						<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
-						<stop offset="100%" style="stop-color:#934000; stop-opacity:1"/>
-					</radialGradient>
+                <radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+                <stop offset="100%" style="stop-color:#934000; stop-opacity:1"/>
+                </radialGradient>
 
-					<radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-						<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
-						<stop offset="100%" style="stop-color:#00736B; stop-opacity:1"/>
-					</radialGradient>
+                <radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+                <stop offset="100%" style="stop-color:#00736B; stop-opacity:1"/>
+                </radialGradient>
 
-					<radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-						<stop offset="0%" style="stop-color:white; stop-opacity:0"/>
-						<stop offset="100%" style="stop-color:#350663; stop-opacity:1"/>
-					</radialGradient>
+                <radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+                <stop offset="100%" style="stop-color:#350663; stop-opacity:1"/>
+                </radialGradient>
 
-					<filter id="blur">
-						<feGaussianBlur = in="SourceGraphic" stdDeviation="0.5"/>
-					</filter>
+                <filter id="blur">
+                    <feGaussianBlur = in="SourceGraphic" stdDeviation="0.5"/>
+                </filter>
 
-					<g>
-						<ellipse cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black" filter="URL(#blur)"/>
-						<ellipse id="outerEllipse" cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black"/>
-						<ellipse cx="50" cy="37.5" rx="32" ry="32" fill="none" stroke="silver"/>
-					</g>
+                <g>
+                <ellipse cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black" filter="URL(#blur)"/>
+                <ellipse id="outerEllipse" cx="50" cy="37.5" rx="34.5" ry="34.5" fill="black"/>
+                <ellipse cx="50" cy="37.5" rx="32" ry="32" fill="none" stroke="silver"/>
+                </g>
 
-					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="black" filter="url(#blur)"/>
-					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="#BCB001"/>
-					<path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" onClick="gameLogic.makeMove('pathOne');" fill="#938B00"/>
+                <path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="black" filter="url(#blur)"/>
+                <path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10"  fill="#BCB001"/>
+                <path id="pathOne" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" onClick="gameLogic.makeMove('pathOne');" fill="#938B00"/>
 
-					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="black" filter="url(#blur)"/>
-					<path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="#BC5201"/>
-					<path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)"  onClick="gameLogic.makeMove('pathTwo');" fill="#934000"/>
-					
-					<rect x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="black" filter="url(#blur)"/>
-					<rect x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="#00736B"/>
-					<rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" onClick="gameLogic.makeMove('rectOne');" fill="#005A53"/>
+                <path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="black" filter="url(#blur)"/>
+                <path d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)" fill="#BC5201"/>
+                <path id="pathTwo" d="M40 10 L40 40 L20 40 C15 40 30 10 40.5 10" transform="translate(100,0) scale(-1,1)"  onClick="gameLogic.makeMove('pathTwo');" fill="#934000"/>
 
-					<path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="black" filter="url(#blur)"/>
-					<path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="#460A7F"/>
-					<path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" onClick="gameLogic.makeMove('pathThree');" fill="#350663"/>
+                <rect x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="black" filter="url(#blur)"/>
+                <rect x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" fill="#00736B"/>
+                <rect id="rectOne" x="0" y="0" width="15" height="35" rx="1" ry="1" transform="translate(42.5,10)" onClick="gameLogic.makeMove('rectOne');" fill="#005A53"/>
 
-					<ellipse cx="50" cy="40" rx="20" ry="20" fill="black" filter="URL(#blur)"/>
-					<ellipse id="innerEllipse" cx="50" cy="40" rx="20" ry="20" fill="black"/>
-					
-					<ellipse cx="50" cy="40" rx="18" ry="18" fill="silver"/>
+                <path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="black" filter="url(#blur)"/>
+                <path d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" fill="#460A7F"/>
+                <path id="pathThree" d="M40.5 42 L20 42 S50 100 80 42 L60 42 L60 47 L40 47 L40 42" onClick="gameLogic.makeMove('pathThree');" fill="#350663"/>
 
-					<g id="lcd-display" transform="scale(0.5,0.5) translate(30,40)">
-						<rect x="40" y="40" width="20" height="10" fill="black"/>
-						<rect x="40" y="40" width="20" height="10" fill="black"/>
-						<text id="streak-text" font-size="9" x="45.5" y="49.75">00</text>
-						<text id="lcd-painted-text1" font-size="3" x="41" y="43">Steps</text>
-					</g>
+                <ellipse cx="50" cy="40" rx="20" ry="20" fill="black" filter="URL(#blur)"/>
+                <ellipse id="innerEllipse" cx="50" cy="40" rx="20" ry="20" fill="black"/>
 
-					<g id="logo">
-						
-						<rect x="40" y="27" width="20" height="7.5" fill="silver" stroke="black" stroke-width="0.5"/>
+                <ellipse cx="50" cy="40" rx="18" ry="18" fill="silver"/>
 
-						<g transform="translate(-19.75,-6.75) scale(1.5,1.5)">
-							<text x="40" y="27" font-size="5" font-family="IMPACT" fill="white">SIMON</text>
-							<text x="40" y="27" font-size="5" font-family="IMPACT" fill="none" stroke-width="0.1" stroke="black">SIMON</text>						
-						</g>
-					</g>
+                <g id="lcd-display" transform="scale(0.5,0.5) translate(30,40)">
+                <rect x="40" y="40" width="20" height="10" fill="black"/>
+                <rect x="40" y="40" width="20" height="10" fill="black"/>
+                <text id="streak-text" font-size="9" x="45.5" y="49.75">00</text>
+                <text id="lcd-painted-text1" font-size="3" x="41" y="43">Steps</text>
+                </g>
 
-					<g>
-						<ellipse cx="50" cy="53" rx="0.2" ry="2.2" stroke="none" fill="black"/>
-						<ellipse cx="49" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
-						<ellipse cx="51" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
-					</g>
+                <g id="logo">
 
-					<g>
-						<ellipse id="strict-light" cx="52.5" cy="40" rx="0.5" ry="0.5" stroke-width="0.2" stroke="black" fill="black"/>
-						<ellipse cx="52.5" cy="42.5" rx="1" ry="1" stroke-width="0.2" stroke="black" fill="yellow" onClick="gameLogic.toggleStrictMode();"/>
-						
-						<text fill="black" font-size="1" x="50.75" y="45">STRICT</text>
+                <rect x="40" y="27" width="20" height="7.5" fill="silver" stroke="black" stroke-width="0.5"/>
 
-						<ellipse id="startButton" cx="60" cy="42.5" rx="1" ry="1" stroke-width="0.2" stroke="black" fill="red" onClick="gameLogic.restart();"/>
-						<text fill="black" font-size="1" x="58.5" y="45">START</text>
-					</g>
-				</g>
-			</svg>
-		</div>
-	</div>
-</body>
+                <g transform="translate(-19.75,-6.75) scale(1.5,1.5)">
+                <text x="40" y="27" font-size="5" font-family="IMPACT" fill="white">SIMON</text>
+                <text x="40" y="27" font-size="5" font-family="IMPACT" fill="none" stroke-width="0.1" stroke="black">SIMON</text>						
+                </g>
+                </g>
+
+                <g>
+                <ellipse cx="50" cy="53" rx="0.2" ry="2.2" stroke="none" fill="black"/>
+                <ellipse cx="49" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
+                <ellipse cx="51" cy="53" rx="0.2" ry="2" stroke="none" fill="black"/>
+                </g>
+
+                <g>
+                <ellipse id="strict-light" cx="52.5" cy="40" rx="0.5" ry="0.5" stroke-width="0.2" stroke="black" fill="black"/>
+                <ellipse cx="52.5" cy="42.5" rx="1" ry="1" stroke-width="0.2" stroke="black" fill="yellow" onClick="gameLogic.toggleStrictMode();"/>
+
+                <text fill="black" font-size="1" x="50.75" y="45">STRICT</text>
+
+                <ellipse id="startButton" cx="60" cy="42.5" rx="1" ry="1" stroke-width="0.2" stroke="black" fill="red" onClick="gameLogic.restart();"/>
+                <text fill="black" font-size="1" x="58.5" y="45">START</text>
+                </g>
+                </g>
+                </svg>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1,3 +1,9 @@
+/**
+ * Author: Jack Gammon
+ * Description: Simon game's logic. processes the gameplay / user clicks, and drives the display javascript
+ */
+
+
 var gameLogic = function () {
     var gameLogicReturner = {};
 
@@ -71,8 +77,8 @@ var gameLogic = function () {
         sequenceTemp = sequence.slice();
     };
 
-    var doEnablePlayerInput = function(value){
-        setTimeout(function(){
+    var doEnablePlayerInput = function (value) {
+        setTimeout(function () {
             waitingForPlayer = true;
         }, value);
     }
