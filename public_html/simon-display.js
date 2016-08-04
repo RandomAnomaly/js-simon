@@ -64,6 +64,15 @@
  		element.innerHTML = value;
  	}
 
+ 	simonDisplayReturner.strictLight = function(value){
+ 		var element = document.querySelector("#strict-light");
+ 		if(value){
+ 			element.style.fill = "red";
+ 		} else {
+ 			element.style.fill = "black";
+ 		}
+ 	}
+
  	return simonDisplayReturner;
  }())
 

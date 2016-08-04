@@ -1,13 +1,16 @@
-var gameLogic = function(){
+var gameLogic = function () {
     var gameLogicReturner = {};
 
     var waitingForPlayer = true;
+    var gameInProgress = false;
 
     var sequence = [];
 
     var sequenceTemp = [];
 
     var timeout = 500;
+
+    var isStrictMode = false;
 
     var segmentMappings = {
         1: "pathOne",
@@ -22,32 +25,32 @@ var gameLogic = function(){
     var segSoundFour = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 
     var soundMappings = {
-        pathOne: function(){
+        pathOne: function () {
             segSoundOne.play();
         },
-        pathTwo: function(){
+        pathTwo: function () {
             segSoundTwo.play();
         },
-        pathThree: function(){
+        pathThree: function () {
             segSoundThree.play();
         },
-        rectOne: function(){
+        rectOne: function () {
             segSoundFour.play();
         }
     }
 
-    var generateRandomSegment = function(){
-        return segmentMappings[randomNumber(1,4)]
+    var generateRandomSegment = function () {
+        return segmentMappings[randomNumber(1, 4)]
     };
 
-    var randomNumber = function(min, max){
+    var randomNumber = function (min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-    var addNewMove = function(){
+    var addNewMove = function () {
         var segmentToAdd = generateRandomSegment();
 
-        while(segmentToAdd === sequence[sequence.length -1]){
+        while (segmentToAdd === sequence[sequence.length - 1]) {
             segmentToAdd = generateRandomSegment();
         }
 
@@ -55,108 +58,123 @@ var gameLogic = function(){
         simonDisplay.incrementPathLength();
     };
 
-    var showQueue = function(){
+    var showQueue = function () {
         console.log("Queue is: " + sequence);
-        for(var i = 0; i < sequence.length; i += 1){
+        for (var i = 0; i < sequence.length; i += 1) {
             doShowQueue(i);
         }
         sequenceTemp = sequence.slice();
     };
 
-    var doShowQueue = function(i){
+    var doShowQueue = function (i) {
         var delay = timeout * i + 10;
         var segment = sequence[i];
-        setTimeout(function(){
+        setTimeout(function () {
             var s = segment;
             flashSegment(s);
-        },delay);
+        }, delay);
     }
 
-    var flashSegment = function(segment){
-
+    var flashSegment = function (segment) {
         //play the segment's sound
         soundMappings[segment]();
-
         simonDisplay.flashSegment(segment, timeout);
     }
 
-    gameLogicReturner.restart = function(){
-        sequence = [];
-        sequenceTemp = [];
-        simonDisplay.zeroPathLength();
+    gameLogicReturner.toggleStrictMode = function () {
+        simonDisplay.strictLight(!isStrictMode);
+        isStrictMode = !isStrictMode;
+        reset();
+    }
+
+    gameLogicReturner.restart = function () {
+        reset();
+        gameInProgress = true;
         addNewMove();
         showQueue();
     }
 
-    
-    gameLogicReturner.makeMove = function(button){
-        if(waitingForPlayer){
+    var reset = function () {
+        sequence = [];
+        sequenceTemp = [];
+        simonDisplay.zeroPathLength();
+        gameInProgress = false;
+    }
+
+    gameLogicReturner.makeMove = function (button) {
+        if (!gameInProgress) {
             flashSegment(button);
-            var nextValidMove = sequence.shift();
-            if(button !== nextValidMove){
-                console.log("Incorrect move");
-                // restart with the current sequence
-                console.log("Sequence: " + sequence + " Temp: " + sequenceTemp);
-                sequence = sequenceTemp.slice();                
-                // sleep for a bit
-                showQueueWithDelay();
-                
-            }
+        } else {
+            if (waitingForPlayer) {
+                flashSegment(button);
+                var nextValidMove = sequence.shift();
+                if (button !== nextValidMove) {
+                    if (isStrictMode) {
+                        failure();
+                    } else {
+                        //non-strict
+                        // restart with the current sequence
+                        sequence = sequenceTemp.slice();
+                        // sleep for a bit
+                        showQueueWithDelay();
+                    }
+                } else if (sequence.length === 0) {
+                    if (sequenceTemp.length !== 20) {
+                        // we've finished this round
+                        sequence = sequenceTemp.slice();
+                        sequenceTemp = [];
+                        addNewMove();
+                        showQueueWithDelay();
+                    } else {
+                        // player victory
+                        victory();
 
-            else if(sequence.length === 0){
-                if(sequenceTemp.length !== 20){
-
-                // we've finished this round
-                sequence = sequenceTemp.slice();
-                sequenceTemp = [];
-                addNewMove();
-                showQueueWithDelay();
-            } else {
-                // player victory
-                victory();
-                
+                    }
+                }
             }
         }
     }
-}
+    var showQueueWithDelay = function () {
+        setTimeout(function () {
+            showQueue();
+        }, timeout);
+    }
 
-var showQueueWithDelay = function(){
-    setTimeout(function(){
-        showQueue();
-    }, timeout);
-}
+    var victory = function () {
+        dance();
+    };
 
-var victory = function(){
-    dance();
-    setTimeout(function(){
-        gameLogicReturner.restart();
-    }, 2000);
-};
-
-var dance = function(){
-    flashAll();
-
-    simonDisplay.setScreenValue("--");
-    setTimeout(function(){
-        simonDisplay.setScreenValue("\\\\");
+    var failure = function () {
         flashAll();
-        setTimeout(function(){
-            simonDisplay.setScreenValue("//");
+        setTimeout(function () {
+            reset();
+        }, 1000);
+    }
+
+    var dance = function () {
+        flashAll();
+
+        simonDisplay.setScreenValue("--");
+        setTimeout(function () {
+            simonDisplay.setScreenValue("\\\\");
             flashAll();
-            setTimeout(function(){
-                simonDisplay.setScreenValue("--");
+            setTimeout(function () {
+                simonDisplay.setScreenValue("//");
                 flashAll();
-            },timeout)
-        },timeout)
-    },timeout)
-}
+                setTimeout(function () {
+                    simonDisplay.setScreenValue("--");
+                    flashAll();
+                }, timeout)
+            }, timeout)
+        }, timeout)
+    }
 
-var flashAll = function(){
-    flashSegment("pathOne");
-    flashSegment("pathTwo");
-    flashSegment("pathThree");
-    flashSegment("rectOne");
-}
+    var flashAll = function () {
+        flashSegment("pathOne");
+        flashSegment("pathTwo");
+        flashSegment("pathThree");
+        flashSegment("rectOne");
+    }
 
-return gameLogicReturner;
+    return gameLogicReturner;
 }();
